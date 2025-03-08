@@ -31,6 +31,8 @@ github
 
 ## USAGE
 
+IMPORTANT: run test_spyeye.py first to verify configurations and requirements !!!
+
 enter all your API keys and configuraion into config.json
 You can supply darkweb onions and much more into the other config files. This allows for greater customization and greater results
 
