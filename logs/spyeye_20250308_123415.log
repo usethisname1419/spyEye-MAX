@@ -1,0 +1,103 @@
+2025-03-08 12:34:15,805 - INFO - API Gatherer initialized successfully
+2025-03-08 12:34:15,805 - INFO - Intel X client initialized successfully
+2025-03-08 12:34:15,805 - INFO - ====== WebDriver manager ======
+2025-03-08 12:34:17,413 - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-08 12:34:17,659 - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-08 12:34:17,864 - INFO - There is no [win64] chromedriver "133.0.6943.141" for browser google-chrome "133.0.6943" in cache
+2025-03-08 12:34:17,864 - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-08 12:34:18,282 - INFO - WebDriver version 133.0.6943.141 selected
+2025-03-08 12:34:18,285 - INFO - Modern chrome version https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.141/win32/chromedriver-win32.zip
+2025-03-08 12:34:18,285 - INFO - About to download new driver from https://storage.googleapis.com/chrome-for-testing-public/133.0.6943.141/win32/chromedriver-win32.zip
+2025-03-08 12:34:18,493 - INFO - Driver downloading response is 200
+2025-03-08 12:34:20,285 - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-08 12:34:24,687 - INFO - Driver has been saved in cache [C:\Users\derek\.wdm\drivers\chromedriver\win64\133.0.6943.141]
+2025-03-08 12:34:26,855 - INFO - Chrome WebDriver initialized successfully
+2025-03-08 12:34:26,855 - INFO - OSINT Gatherer initialized successfully
+2025-03-08 12:34:28,890 - ERROR - Failed to setup Tor: Error connecting to SOCKS5 proxy 127.0.0.1:9050: [WinError 10061] No connection could be made because the target machine actively refused it
+Traceback (most recent call last):
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\socks.py", line 787, in connect
+    super(socksocket, self).connect(proxy_addr)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\socket.py", line 535, in _make_socket
+    control_socket.connect((self.address, self.port))
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\socks.py", line 47, in wrapper
+    return function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\socks.py", line 800, in connect
+    raise ProxyConnectionError(msg, error)
+socks.ProxyConnectionError: Error connecting to SOCKS5 proxy 127.0.0.1:9050: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\derek\PycharmProjects\osunt\darkweb_monitor.py", line 71, in _setup_tor
+    self.tor_controller = Controller.from_port(
+                          ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\control.py", line 1033, in from_port
+    control_port = stem.socket.ControlPort(address, port)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\socket.py", line 503, in __init__
+    self.connect()
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\socket.py", line 172, in connect
+    self._socket = self._make_socket()
+                   ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\socket.py", line 538, in _make_socket
+    raise stem.SocketError(exc)
+stem.SocketError: Error connecting to SOCKS5 proxy 127.0.0.1:9050: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-03-08 12:34:28,895 - ERROR - Failed to initialize Dark Web Monitor: Error connecting to SOCKS5 proxy 127.0.0.1:9050: [WinError 10061] No connection could be made because the target machine actively refused it
+Traceback (most recent call last):
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\socks.py", line 787, in connect
+    super(socksocket, self).connect(proxy_addr)
+ConnectionRefusedError: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\socket.py", line 535, in _make_socket
+    control_socket.connect((self.address, self.port))
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\socks.py", line 47, in wrapper
+    return function(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\socks.py", line 800, in connect
+    raise ProxyConnectionError(msg, error)
+socks.ProxyConnectionError: Error connecting to SOCKS5 proxy 127.0.0.1:9050: [WinError 10061] No connection could be made because the target machine actively refused it
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\derek\PycharmProjects\osunt\darkweb_monitor.py", line 43, in initialize
+    await self._setup_tor()
+  File "C:\Users\derek\PycharmProjects\osunt\darkweb_monitor.py", line 71, in _setup_tor
+    self.tor_controller = Controller.from_port(
+                          ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\control.py", line 1033, in from_port
+    control_port = stem.socket.ControlPort(address, port)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\socket.py", line 503, in __init__
+    self.connect()
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\socket.py", line 172, in connect
+    self._socket = self._make_socket()
+                   ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\socket.py", line 538, in _make_socket
+    raise stem.SocketError(exc)
+stem.SocketError: Error connecting to SOCKS5 proxy 127.0.0.1:9050: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-03-08 12:34:28,896 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001BF18CA1350>
+2025-03-08 12:34:28,896 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001BF1798D710>
+2025-03-08 12:34:28,896 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001BF17E9BB10>
+2025-03-08 12:34:28,896 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001BF17163050>
+2025-03-08 12:34:28,896 - ERROR - Failed to load configuration: [Errno 2] No such file or directory: 'test_config.json'
+Traceback (most recent call last):
+  File "C:\Users\derek\PycharmProjects\osunt\spyeye.py", line 60, in _load_config
+    with open(config_path, 'r') as f:
+         ^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'test_config.json'
+2025-03-08 12:34:28,898 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x000001BF1798D710>

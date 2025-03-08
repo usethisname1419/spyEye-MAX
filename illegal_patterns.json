@@ -1,0 +1,36 @@
+{
+    "keywords": {
+        "high_risk": [
+            "hack",
+            "exploit",
+            "vulnerability",
+            "breach",
+            "leaked",
+            "stolen"
+        ],
+        "medium_risk": [
+            "crack",
+            "dump",
+            "database",
+            "credentials"
+        ],
+        "low_risk": [
+            "password",
+            "login",
+            "account"
+        ]
+    },
+    "regex_patterns": {
+        "credit_card": "\\b\\d{4}[- ]?\\d{4}[- ]?\\d{4}[- ]?\\d{4}\\b",
+        "email": "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b",
+        "bitcoin_address": "\\b[13][a-km-zA-HJ-NP-Z1-9]{25,34}\\b"
+    },
+    "context_rules": [
+        {
+            "name": "sensitive_data_exposure",
+            "patterns": ["database", "dump", "leaked"],
+            "proximity": 50,
+            "risk_level": "high"
+        }
+    ]
+}

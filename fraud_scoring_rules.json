@@ -1,0 +1,30 @@
+{
+    "risk_factors": {
+        "email": {
+            "disposable_domain": 30,
+            "recently_created": 20,
+            "breach_history": 25,
+            "suspicious_pattern": 15
+        },
+        "phone": {
+            "voip": 25,
+            "invalid_format": 30,
+            "suspicious_region": 20
+        },
+        "domain": {
+            "recently_registered": 25,
+            "suspicious_tld": 20,
+            "poor_reputation": 30
+        }
+    },
+    "thresholds": {
+        "high_risk": 75,
+        "medium_risk": 50,
+        "low_risk": 25
+    },
+    "evidence_weights": {
+        "direct_match": 1.0,
+        "partial_match": 0.5,
+        "contextual_match": 0.3
+    }
+}

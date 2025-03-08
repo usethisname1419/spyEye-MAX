@@ -1,0 +1,49 @@
+{
+    "email_patterns": {
+        "disposable_domains": [
+            "tempmail.com",
+            "10minutemail.com",
+            "throwawaymail.com"
+        ],
+        "suspicious_patterns": [
+            "^temp_",
+            "^test_",
+            "^anonymous_"
+        ]
+    },
+    "phone_patterns": {
+        "high_risk_prefixes": [
+            "+1555",
+            "+1000"
+        ],
+        "voip_indicators": [
+            "google voice",
+            "skype",
+            "voip"
+        ]
+    },
+    "behavioral_patterns": {
+        "suspicious_activities": [
+            "multiple_registrations",
+            "rapid_changes",
+            "unusual_access_patterns"
+        ],
+        "risk_indicators": [
+            "multiple_aliases",
+            "mismatched_locations",
+            "automated_behavior"
+        ]
+    },
+    "domain_patterns": {
+        "suspicious_tlds": [
+            ".xyz",
+            ".tk",
+            ".top"
+        ],
+        "phishing_patterns": [
+            "secure-",
+            "login-",
+            "account-verify"
+        ]
+    }
+}

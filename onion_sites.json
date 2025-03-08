@@ -1,0 +1,23 @@
+{
+    "search_engines": [
+        "http://haystak5njsmn2hqkewecpaxetahtwhsbsa64jom2k22z5afxhnpxfid.onion",
+        "http://gjobqjj7wyczbqie.onion"
+    ],
+    "markets": [
+        "http://darkmarket000.onion",
+        "http://liberty4mhc252jzz.onion"
+    ],
+    "forums": [
+        "http://darkforumxyz.onion",
+        "http://forumbase123.onion"
+    ],
+    "paste_sites": [
+        "http://strongerw2ise74v3duebgsvug4mehyhlpa7f6kfwnas7zofs3kov7yd.onion",
+        "http://nzxj65x32vh2fkhk.onion"
+    ],
+    "monitoring_settings": {
+        "request_timeout": 30,
+        "max_retries": 3,
+        "delay_between_requests": 2
+    }
+}

@@ -1,0 +1,200 @@
+2025-03-08 12:51:58,156 - INFO - API Gatherer initialized successfully
+2025-03-08 12:51:58,157 - INFO - Intel X client initialized successfully
+2025-03-08 12:51:58,157 - INFO - ====== WebDriver manager ======
+2025-03-08 12:51:59,864 - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-08 12:52:00,072 - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-08 12:52:00,264 - INFO - Driver [C:\Users\derek\.wdm\drivers\chromedriver\win64\133.0.6943.141\chromedriver-win32/chromedriver.exe] found in cache
+2025-03-08 12:52:01,601 - INFO - Chrome WebDriver initialized successfully
+2025-03-08 12:52:01,603 - INFO - OSINT Gatherer initialized successfully
+2025-03-08 12:52:03,611 - ERROR - Could not connect to Tor control port: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-03-08 12:52:03,613 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "HTTP/1.0 501 Tor is not an HTTP Proxy\r\n"
+2025-03-08 12:52:03,613 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "Content-Type: text/html; charset=iso-8859-1\r\n"
+2025-03-08 12:52:03,613 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "\r\n"
+2025-03-08 12:52:03,613 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "<html>\n"
+2025-03-08 12:52:03,614 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "<head>\n"
+2025-03-08 12:52:03,616 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,617 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,617 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,617 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,617 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "HTTP/1.0 501 Tor is not an HTTP Proxy\r\n"
+2025-03-08 12:52:03,618 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "Content-Type: text/html; charset=iso-8859-1\r\n"
+2025-03-08 12:52:03,618 - ERROR - Tor authentication failed: unable to use the control socket
+2025-03-08 12:52:03,618 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "\r\n"
+2025-03-08 12:52:03,618 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,618 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "<html>\n"
+2025-03-08 12:52:03,618 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,618 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "<head>\n"
+2025-03-08 12:52:03,619 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,619 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "<title>This is a SOCKS Proxy, Not An HTTP Proxy</title>\n"
+2025-03-08 12:52:03,619 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,619 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "</head>\n"
+2025-03-08 12:52:03,619 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,620 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "<body>\n"
+2025-03-08 12:52:03,620 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,620 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "<h1>This is a SOCKs proxy, not an HTTP proxy.</h1>\n"
+2025-03-08 12:52:03,620 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,620 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "<p>\n"
+2025-03-08 12:52:03,621 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,621 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "It appears you have configured your web browser to use this Tor port as\n"
+2025-03-08 12:52:03,621 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,621 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "an HTTP proxy.\n"
+2025-03-08 12:52:03,621 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,621 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "</p><p>\n"
+2025-03-08 12:52:03,621 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,621 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "This is not correct: This port is configured as a SOCKS proxy, not\n"
+2025-03-08 12:52:03,621 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,621 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "an HTTP proxy. If you need an HTTP proxy tunnel, use the HTTPTunnelPort\n"
+2025-03-08 12:52:03,622 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,622 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "configuration option in place of, or in addition to, SOCKSPort.\n"
+2025-03-08 12:52:03,622 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,622 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "Please configure your client accordingly.\n"
+2025-03-08 12:52:03,622 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,622 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "</p>\n"
+2025-03-08 12:52:03,622 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,622 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "<p>\n"
+2025-03-08 12:52:03,623 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,623 - INFO - Error while receiving a control message (ProtocolError): no CRLF linebreak, "See <a href="https://www.torproject.org/documentation.html">https://www.torproject.org/documentation.html</a> for more information.\n"
+2025-03-08 12:52:03,623 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,623 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "</p>\n"
+2025-03-08 12:52:03,623 - INFO - Tor provided a malformed message (All lines should end with CRLF)
+2025-03-08 12:52:03,623 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,623 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "</body>\n"
+2025-03-08 12:52:03,623 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "</html>\n"
+2025-03-08 12:52:03,624 - INFO - Error while receiving a control message (SocketClosed): received exception "[WinError 10053] An established connection was aborted by the software in your host machine"
+2025-03-08 12:52:03,625 - INFO - Tor provided a malformed message (Badly formatted reply line: beginning is malformed)
+2025-03-08 12:52:03,625 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "HTTP/1.0 501 Tor is not an HTTP Proxy\r\n"
+2025-03-08 12:52:03,625 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "Content-Type: text/html; charset=iso-8859-1\r\n"
+2025-03-08 12:52:03,625 - ERROR - Tor authentication retry failed: unable to use the control socket
+2025-03-08 12:52:03,626 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "\r\n"
+2025-03-08 12:52:03,626 - ERROR - Failed to setup Tor: unable to use the control socket
+2025-03-08 12:52:03,626 - ERROR - Failed to initialize Dark Web Monitor: unable to use the control socket
+Traceback (most recent call last):
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\connection.py", line 534, in authenticate
+    protocolinfo_response = get_protocolinfo(controller)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\connection.py", line 1025, in get_protocolinfo
+    protocolinfo_response = _msg(controller, 'PROTOCOLINFO 1')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\connection.py", line 1043, in _msg
+    return controller.msg(message)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\control.py", line 669, in msg
+    raise response
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\control.py", line 948, in _reader_loop
+    control_message = self._socket.recv()
+                      ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\socket.py", line 474, in recv
+    return self._recv(lambda s, sf: recv_message(sf))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\socket.py", line 274, in _recv
+    return handler(my_socket, my_socket_file)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\socket.py", line 474, in <lambda>
+    return self._recv(lambda s, sf: recv_message(sf))
+                                    ^^^^^^^^^^^^^^^^
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\socket.py", line 706, in recv_message
+    raise stem.ProtocolError('Badly formatted reply line: beginning is malformed')
+stem.ProtocolError: Badly formatted reply line: beginning is malformed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\derek\PycharmProjects\osunt\darkweb_monitor.py", line 91, in _setup_tor
+    self.tor_controller.authenticate()
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\control.py", line 1112, in authenticate
+    stem.connection.authenticate(self, *args, **kwargs)
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\connection.py", line 536, in authenticate
+    raise IncorrectSocketType('unable to use the control socket')
+stem.connection.IncorrectSocketType: unable to use the control socket
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\connection.py", line 534, in authenticate
+    protocolinfo_response = get_protocolinfo(controller)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\connection.py", line 1025, in get_protocolinfo
+    protocolinfo_response = _msg(controller, 'PROTOCOLINFO 1')
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\connection.py", line 1043, in _msg
+    return controller.msg(message)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\control.py", line 669, in msg
+    raise response
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\control.py", line 948, in _reader_loop
+    control_message = self._socket.recv()
+                      ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\socket.py", line 474, in recv
+    return self._recv(lambda s, sf: recv_message(sf))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\socket.py", line 274, in _recv
+    return handler(my_socket, my_socket_file)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\socket.py", line 474, in <lambda>
+    return self._recv(lambda s, sf: recv_message(sf))
+                                    ^^^^^^^^^^^^^^^^
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\socket.py", line 706, in recv_message
+    raise stem.ProtocolError('Badly formatted reply line: beginning is malformed')
+stem.ProtocolError: Badly formatted reply line: beginning is malformed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\derek\PycharmProjects\osunt\darkweb_monitor.py", line 43, in initialize
+    await self._setup_tor()
+  File "C:\Users\derek\PycharmProjects\osunt\darkweb_monitor.py", line 96, in _setup_tor
+    self.tor_controller.authenticate(password='')
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\control.py", line 1112, in authenticate
+    stem.connection.authenticate(self, *args, **kwargs)
+  File "C:\Users\derek\PycharmProjects\osunt\venv\Lib\site-packages\stem\connection.py", line 536, in authenticate
+    raise IncorrectSocketType('unable to use the control socket')
+stem.connection.IncorrectSocketType: unable to use the control socket
+2025-03-08 12:52:03,626 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "<html>\n"
+2025-03-08 12:52:03,635 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x00000196B0EA8950>
+2025-03-08 12:52:03,635 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "<head>\n"
+2025-03-08 12:52:03,635 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x00000196AF7F8610>
+2025-03-08 12:52:03,635 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "<title>This is a SOCKS Proxy, Not An HTTP Proxy</title>\n"
+2025-03-08 12:52:03,635 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x00000196AFB27110>
+2025-03-08 12:52:03,636 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "</head>\n"
+2025-03-08 12:52:03,636 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x00000196AFDE8F10>
+2025-03-08 12:52:03,636 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "<body>\n"
+2025-03-08 12:52:03,636 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "<h1>This is a SOCKs proxy, not an HTTP proxy.</h1>\n"
+2025-03-08 12:52:03,636 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "<p>\n"
+2025-03-08 12:52:03,636 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "It appears you have configured your web browser to use this Tor port as\n"
+2025-03-08 12:52:03,636 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "an HTTP proxy.\n"
+2025-03-08 12:52:03,636 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "</p><p>\n"
+2025-03-08 12:52:03,637 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "This is not correct: This port is configured as a SOCKS proxy, not\n"
+2025-03-08 12:52:03,637 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "an HTTP proxy. If you need an HTTP proxy tunnel, use the HTTPTunnelPort\n"
+2025-03-08 12:52:03,637 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "configuration option in place of, or in addition to, SOCKSPort.\n"
+2025-03-08 12:52:03,637 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "Please configure your client accordingly.\n"
+2025-03-08 12:52:03,637 - ERROR - Failed to load configuration: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "C:\Users\derek\PycharmProjects\osunt\spyeye.py", line 61, in _load_config
+    config = json.load(f)
+             ^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\json\__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\json\__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\json\decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\Lib\json\decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-03-08 12:52:03,637 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "</p>\n"
+2025-03-08 12:52:03,638 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "<p>\n"
+2025-03-08 12:52:03,639 - INFO - Error while receiving a control message (ProtocolError): no CRLF linebreak, "See <a href="https://www.torproject.org/documentation.html">https://www.torproject.org/documentation.html</a> for more information.\n"
+2025-03-08 12:52:03,639 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "</p>\n"
+2025-03-08 12:52:03,639 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "</body>\n"
+2025-03-08 12:52:03,639 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, "</html>\n"
+2025-03-08 12:52:03,639 - INFO - Error while receiving a control message (ProtocolError): malformed status code/divider, " "
+2025-03-08 12:52:03,639 - INFO - Error while receiving a control message (SocketClosed): empty socket content
+2025-03-08 12:52:03,640 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x00000196B0F16010>

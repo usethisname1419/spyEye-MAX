@@ -1,0 +1,43 @@
+2025-03-08 13:07:33,892 - INFO - API Gatherer initialized successfully
+2025-03-08 13:07:33,893 - INFO - Intel X client initialized successfully
+2025-03-08 13:07:33,893 - INFO - ====== WebDriver manager ======
+2025-03-08 13:07:33,979 - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-08 13:07:34,356 - INFO - Get LATEST chromedriver version for google-chrome
+2025-03-08 13:07:34,635 - INFO - Driver [/home/prx00/.wdm/drivers/chromedriver/linux64/131.0.6778.264/chromedriver-linux64/chromedriver] found in cache
+2025-03-08 13:07:34,989 - INFO - Chrome WebDriver initialized successfully
+2025-03-08 13:07:34,989 - INFO - OSINT Gatherer initialized successfully
+2025-03-08 13:07:34,992 - INFO - Tor connection established successfully
+2025-03-08 13:07:34,992 - INFO - Dark Web Monitor initialized successfully
+2025-03-08 13:07:34,992 - WARNING - Missing API keys: emailrep, phonevalidator
+2025-03-08 13:07:34,992 - INFO - Fraud Scorer initialized successfully
+2025-03-08 13:07:34,993 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f40661c6a50>
+2025-03-08 13:07:34,993 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f40661c7c10>
+2025-03-08 13:07:34,993 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f40661c7f90>
+2025-03-08 13:07:34,993 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f4066eb1750>
+2025-03-08 13:07:34,993 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f4066200290>
+2025-03-08 13:07:34,993 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f4066200390>
+2025-03-08 13:07:34,993 - ERROR - Failed to load configuration: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "/home/prx00/spyeyev1/osunt/spyeye.py", line 61, in _load_config
+    config = json.load(f)
+             ^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+2025-03-08 13:07:34,995 - ERROR - Unclosed client session
+client_session: <aiohttp.client.ClientSession object at 0x7f4066fb98d0>

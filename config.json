@@ -1,0 +1,97 @@
+{
+    "api_keys": {
+        "hibp": "",
+        "shodan": "",
+        "virustotal": "",
+        "securitytrails": "",
+        "intelx": "",
+        "numverify": "",
+        "twilio_sid": "",
+        "twilio_token": "",
+        "phonevalidator": "",
+        "emailrep": "",
+        "hunter": "",
+        "github": ""
+    },
+    "proxy_settings": {
+        "use_tor": true,
+        "tor_socks_port": 9050,
+        "tor_control_port": 9051,
+        "tor_control_password": "",
+        "proxy_rotation_interval": 300,
+        "custom_proxies": []
+    },
+    "investigation_settings": {
+        "concurrent_tasks": 5,
+        "timeout": 30,
+        "max_retries": 3,
+        "rate_limits": {
+            "api_calls_per_minute": 60,
+            "max_concurrent_searches": 3
+        },
+        "search_depth": {
+            "osint": "deep",
+            "dark_web": "comprehensive",
+            "social_media": "thorough"
+        }
+    },
+    "output_settings": {
+        "report_formats": ["json", "html", "pdf"],
+        "evidence_collection": true,
+        "screenshot_enabled": true,
+        "save_raw_data": true,
+        "compress_results": true,
+        "export_path": "exports"
+    },
+    "monitoring_settings": {
+        "alert_threshold": 75,
+        "notification_email": "your_email@domain.com",
+        "real_time_monitoring": true,
+        "monitor_interval": 3600,
+        "alert_on": {
+            "new_breaches": true,
+            "dark_web_mentions": true,
+            "suspicious_activities": true,
+            "risk_score_changes": true
+        }
+    },
+    "fraud_scoring_rules": {
+        "weights": {
+            "phone_verification": 0.2,
+            "email_verification": 0.2,
+            "domain_analysis": 0.15,
+            "dark_web_presence": 0.15,
+            "social_media": 0.15,
+            "behavioral_patterns": 0.15
+        },
+        "thresholds": {
+            "high_risk": 75,
+            "medium_risk": 50,
+            "low_risk": 25
+        }
+    },
+    "illegal_patterns": {
+        "keywords": {
+            "high_risk": [
+                "hack",
+                "crack",
+                "exploit",
+                "vulnerability",
+                "leaked",
+                "database",
+                "credentials"
+            ],
+            "medium_risk": [
+                "private",
+                "confidential",
+                "internal",
+                "sensitive"
+            ],
+            "low_risk": [
+                "password",
+                "username",
+                "login"
+            ]
+        }
+    }
+}

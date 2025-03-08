@@ -1,0 +1,67 @@
+# test_spyeye.py
+async def setup_test_environment(self):
+    """Create test configuration files"""
+    test_config = {
+        "api_keys": {
+            "hibp": "test_key",
+            "virustotal": "test_key",
+            "intelx": "test_key",
+            "hunter": "test_key",
+            "numverify": "test_key",
+            "twilio_sid": "test_key",
+            "twilio_token": "test_key"
+        },
+        "proxy_settings": {
+            "enabled": False,
+            "type": "socks5",
+            "host": "127.0.0.1",
+            "port": 9050
+        },
+        "investigation_settings": {
+            "timeout": 30,
+            "max_retries": 1,
+            "concurrent_tasks": 2,
+            "use_tor": False
+        },
+        "output_settings": {
+            "save_raw_data": True,
+            "compress_results": False
+        },
+        "monitoring_settings": {
+            "rate_limit_delay": 1,
+            "max_requests_per_minute": 10
+        }
+    }
+
+    # Write test configuration
+    with open('test_config.json', 'w') as f:
+        json.dump(test_config, f, indent=4)
+
+    # Create other necessary test files
+    test_patterns = {
+        "keywords": {
+            "high_risk": ["test_keyword"],
+            "medium_risk": ["test_medium"],
+            "low_risk": ["test_low"]
+        }
+    }
+    with open('illegal_patterns.json', 'w') as f:
+        json.dump(test_patterns, f, indent=4)
+
+    test_scoring = {
+        "risk_factors": {
+            "email": {"disposable_domain": 30},
+            "phone": {"voip": 25},
+            "domain": {"recently_registered": 25}
+        }
+    }
+    with open('fraud_scoring_rules.json', 'w') as f:
+        json.dump(test_scoring, f, indent=4)
+
+    test_onion = {
+        "search_engines": ["test.onion"],
+        "markets": ["test_market.onion"],
+        "forums": ["test_forum.onion"]
+    }
+    with open('onion_sites.json', 'w') as f:
+        json.dump(test_onion, f, indent=4)
