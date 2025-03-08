@@ -56,7 +56,9 @@ Quick email scan
 
 --no-tor
 
+## CONTRIBUTIONS
 
+spyEye-Max would love for anybody to contribute to this project. please send me a message on Telegram @usethisusername
 
 ## SUPPORT
 
