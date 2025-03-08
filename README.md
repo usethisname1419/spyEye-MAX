@@ -35,10 +35,15 @@ Quick email scan
 ## ARGS
 
 --config
+
 --target
+
 --output
+
 --verbose
+
 --no-tor
+
 
 
 ## SUPPORT
