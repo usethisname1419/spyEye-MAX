@@ -8,15 +8,25 @@ This was originally create to help with a corporate research investigation.
 
 ## API
 HIBP
+
 shodan
+
 virustotal
+
 securitytrails
+
 intelx
+
 numverify
+
 twilio
+
 phonevalidator
+
 emailrep
+
 hunter
+
 github
 
 ## USAGE
