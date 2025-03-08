@@ -1,30 +1,43 @@
 {
-    "risk_factors": {
-        "email": {
-            "disposable_domain": 30,
-            "recently_created": 20,
-            "breach_history": 25,
-            "suspicious_pattern": 15
+    "weights": {
+        "email_score": 0.4,
+        "phone_score": 0.3,
+        "dark_web_score": 0.3
+    },
+    "risk_levels": {
+        "low": {
+            "min": 0,
+            "max": 30,
+            "description": "Low risk"
         },
-        "phone": {
-            "voip": 25,
-            "invalid_format": 30,
-            "suspicious_region": 20
+        "medium": {
+            "min": 31,
+            "max": 70,
+            "description": "Medium risk"
         },
-        "domain": {
-            "recently_registered": 25,
-            "suspicious_tld": 20,
-            "poor_reputation": 30
+        "high": {
+            "min": 71,
+            "max": 100,
+            "description": "High risk"
         }
     },
-    "thresholds": {
-        "high_risk": 75,
-        "medium_risk": 50,
-        "low_risk": 25
+    "email_risk": {
+        "suspicious_domain": 50,
+        "disposable": 70,
+        "invalid": 100,
+        "suspicious_score": 50,
+        "webmail": 30
     },
-    "evidence_weights": {
-        "direct_match": 1.0,
-        "partial_match": 0.5,
-        "contextual_match": 0.3
-    }
+    "phone_risk": {
+        "invalid": 100,
+        "voip": 60,
+        "foreign": 40,
+        "suspicious": 50
+    },
+    "dark_web_risk": {
+        "found": 80,
+        "multiple_sources": 100,
+        "recent_breach": 90
+    },
+    "threshold": 75
 }

@@ -67,6 +67,45 @@ class FraudScorer:
                 }
             }
 
+    async def _process_numverify_results(self, numverify_result, results):
+        """Process NumVerify API results"""
+        try:
+            if numverify_result.get('valid'):
+                results['valid'] = True
+                results['carrier'] = numverify_result.get('carrier', '')
+                results['location'] = numverify_result.get('country_name', '')
+                results['line_type'] = numverify_result.get('line_type', '')
+
+                # Add risk factors
+                if numverify_result.get('line_type') == 'voip':
+                    results['risk_factors'].append('VOIP number detected')
+                    results['risk_score'] += self.scoring_rules.get('phone_risk', {}).get('voip', 60)
+            else:
+                results['valid'] = False
+                results['risk_factors'].append('Invalid phone number')
+                results['risk_score'] += self.scoring_rules.get('phone_risk', {}).get('invalid', 100)
+
+        except Exception as e:
+            self.logger.error(f"Error processing NumVerify results: {str(e)}")
+            results['error'] = str(e)
+
+    async def _check_hunter(self, email):
+        """Check email using Hunter API"""
+        try:
+            async with aiohttp.ClientSession() as session:
+                params = {
+                    'email': email,
+                    'api_key': self.config['api_keys']['hunter']
+                }
+                async with session.get('https://api.hunter.io/v2/email-verifier', params=params) as response:
+                    if response.status == 200:
+                        return await response.json()
+                    else:
+                        self.logger.error(f"Hunter API error: {response.status}")
+                        return None
+        except Exception as e:
+            self.logger.error(f"Error checking Hunter API: {str(e)}")
+            return None
     def _load_fraud_patterns(self) -> Dict:
         """Load fraud detection patterns"""
         try:
@@ -132,71 +171,42 @@ class FraudScorer:
 
         return missing_keys
 
-    async def calculate_comprehensive_score(self, target_info: Dict) -> Dict:
-        """Calculate comprehensive fraud score for all target information"""
-        results = {
-            "overall_score": 0,
-            "risk_level": "",
-            "component_scores": {},
-            "verification_results": {
-                "phones": {},
-                "emails": {},
-                "domains": {}
-            },
-            "risk_factors": [],
-            "evidence": [],
-            "recommendations": [],
-            "metadata": {
-                "timestamp": datetime.now().isoformat(),
-                "version": "1.0",
-                "apis_used": []
-            }
-        }
-
+    async def calculate_comprehensive_score(self, target_info):
+        """Calculate comprehensive fraud score"""
         try:
-            # Phone number verification
-            for phone in target_info.get("phone_numbers", []):
-                results["verification_results"]["phones"][phone] = \
-                    await self._verify_phone_number(phone)
+            results = {
+                'email_analysis': {},
+                'phone_analysis': {},
+                'dark_web_analysis': {},
+                'risk_factors': [],
+                'risk_score': 0
+            }
 
-            # Email verification
-            for email in target_info.get("emails", []):
-                results["verification_results"]["emails"][email] = \
-                    await self._verify_email(email)
+            # Process email if provided
+            if 'email' in target_info:
+                email_results = await self._verify_email(target_info['email'])
+                results['email_analysis'] = email_results
 
-            # Domain analysis
-            for domain in target_info.get("domains", []):
-                results["verification_results"]["domains"][domain] = \
-                    await self._analyze_domain(domain)
-
-            # Calculate component scores
-            results["component_scores"] = await self._calculate_component_scores(
-                results["verification_results"]
-            )
+            # Process phone if provided
+            if 'phone' in target_info:
+                phone_results = await self._verify_phone_number(target_info['phone'])
+                results['phone_analysis'] = phone_results
 
             # Calculate overall score
-            results["overall_score"] = self._calculate_weighted_score(
-                results["component_scores"]
-            )
+            scores = {
+                'email_score': results['email_analysis'].get('risk_score', 0),
+                'phone_score': results['phone_analysis'].get('risk_score', 0),
+                'dark_web_score': results.get('dark_web_analysis', {}).get('risk_score', 0)
+            }
 
-            # Determine risk level
-            results["risk_level"] = self._determine_risk_level(results["overall_score"])
-
-            # Compile risk factors and evidence
-            results["risk_factors"] = self._compile_risk_factors()
-            results["evidence"] = self._compile_evidence()
-
-            # Generate recommendations
-            results["recommendations"] = self._generate_recommendations(results)
-
-            # Update metadata
-            results["metadata"]["apis_used"] = self._get_apis_used()
+            results['overall_score'] = self._calculate_weighted_score(scores)
+            results['risk_assessment'] = self._determine_risk_level(results['overall_score'])
 
             return results
 
         except Exception as e:
-            self.logger.error(f"Error calculating comprehensive score: {str(e)}", exc_info=True)
-            raise
+            self.logger.error(f"Error calculating comprehensive score: {str(e)}")
+            return {'error': str(e)}
 
     async def _verify_phone_number(self, phone: str) -> Dict:
         """Comprehensive phone number verification using multiple APIs"""
@@ -341,6 +351,50 @@ class FraudScorer:
             self.logger.error(f"NumVerify API error: {str(e)}", exc_info=True)
             return None
 
+    async def _process_twilio_results(self, twilio_result, results):
+        """Process Twilio API results"""
+        try:
+            if twilio_result:
+                results['valid'] = twilio_result.get('valid', False)
+                results['carrier'] = twilio_result.get('carrier', {}).get('name', '')
+                results['location'] = twilio_result.get('country_code', '')
+                results['line_type'] = twilio_result.get('type', '')
+
+                # Add risk factors based on Twilio results
+                if twilio_result.get('type') == 'voip':
+                    results['risk_factors'].append('VOIP number detected')
+                    results['risk_score'] += self.scoring_rules.get('phone_risk', {}).get('voip', 60)
+
+                if twilio_result.get('country_code') != 'US':  # Adjust based on your needs
+                    results['risk_factors'].append('Foreign phone number')
+                    results['risk_score'] += self.scoring_rules.get('phone_risk', {}).get('foreign', 40)
+
+        except Exception as e:
+            self.logger.error(f"Error processing Twilio results: {str(e)}")
+            results['error'] = str(e)
+
+    async def _process_hunter_results(self, hunter_result, results):
+        """Process Hunter API results"""
+        try:
+            if hunter_result and 'data' in hunter_result:
+                data = hunter_result['data']
+                results['valid'] = data.get('valid', False)
+                results['disposable'] = data.get('disposable', False)
+                results['webmail'] = data.get('webmail', False)
+                results['score'] = data.get('score', 0)
+
+                # Add risk factors based on Hunter results
+                if data.get('disposable'):
+                    results['risk_factors'].append('Disposable email detected')
+                    results['risk_score'] += self.scoring_rules.get('email_risk', {}).get('disposable', 70)
+
+                if data.get('score', 0) < 50:
+                    results['risk_factors'].append('Low email reputation score')
+                    results['risk_score'] += self.scoring_rules.get('email_risk', {}).get('suspicious_score', 50)
+
+        except Exception as e:
+            self.logger.error(f"Error processing Hunter results: {str(e)}")
+            results['error'] = str(e)
     async def _check_twilio_lookup(self, phone: str) -> Optional[Dict]:
         """Check phone number using Twilio Lookup API"""
         try:
@@ -486,23 +540,52 @@ class FraudScorer:
 
         return scores
 
-    def _calculate_weighted_score(self, component_scores: Dict) -> float:
-        """Calculate weighted overall score"""
-        weights = self.scoring_rules["weights"]
-        weighted_sum = 0
-        weight_sum = 0
+    def _determine_risk_level(self, score):
+        """Determine risk level based on score"""
+        try:
+            risk_levels = self.scoring_rules.get('risk_levels', {
+                "low": {"min": 0, "max": 30, "description": "Low risk"},
+                "medium": {"min": 31, "max": 70, "description": "Medium risk"},
+                "high": {"min": 71, "max": 100, "description": "High risk"}
+            })
 
-        for component, score in component_scores.items():
-            if score > 0:  # Only consider components with actual scores
-                weight = weights.get(component, 0)
-                weighted_sum += score * weight
-                weight_sum += weight
+            for level, range_data in risk_levels.items():
+                if range_data['min'] <= score <= range_data['max']:
+                    return {
+                        'level': level,
+                        'description': range_data['description']
+                    }
 
-        if weight_sum == 0:
+            return {'level': 'unknown', 'description': 'Unable to determine risk level'}
+
+        except Exception as e:
+            self.logger.error(f"Error determining risk level: {str(e)}")
+            return {'level': 'error', 'description': str(e)}
+    def _calculate_weighted_score(self, scores):
+        """Calculate weighted score from individual components"""
+        try:
+            weights = self.scoring_rules.get("weights", {
+                "email_score": 0.4,
+                "phone_score": 0.3,
+                "dark_web_score": 0.3
+            })
+
+            weighted_sum = 0
+            total_weight = 0
+
+            for key, score in scores.items():
+                if key in weights and isinstance(score, (int, float)):
+                    weighted_sum += score * weights[key]
+                    total_weight += weights[key]
+
+            if total_weight == 0:
+                return 0
+
+            return round(weighted_sum / total_weight, 2)
+
+        except Exception as e:
+            self.logger.error(f"Error calculating weighted score: {str(e)}")
             return 0
-
-        return round(weighted_sum / weight_sum, 2)
-
     def _determine_risk_level(self, score: float) -> str:
         """Determine risk level based on score"""
         for level, range_dict in self.scoring_rules["risk_levels"].items():

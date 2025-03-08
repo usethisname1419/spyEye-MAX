@@ -9,7 +9,7 @@ import dns.resolver
 import time
 from urllib.parse import urlparse
 import re
-
+import random
 
 class OSINTGatherer:
     def __init__(self, config: Dict):
@@ -259,6 +259,177 @@ class OSINTGatherer:
 
         return {"metadata": results}
 
+    async def gather_email_info(self, email):
+        """Gather information about an email address"""
+        try:
+            results = {
+                'email': email,
+                'sources': [],
+                'breaches': [],
+                'pastes': [],
+                'social_media': [],
+                'domains': [],
+                'metadata': {},
+                'risk_factors': []
+            }
+
+            # Check HIBP for breaches
+            try:
+                hibp_results = await self._check_hibp(email)
+                if hibp_results:
+                    results['breaches'].extend(hibp_results)
+                    if len(hibp_results) > 0:
+                        results['risk_factors'].append(f"Found in {len(hibp_results)} data breaches")
+            except Exception as e:
+                self.logger.error(f"HIBP check failed for {email}: {str(e)}")
+
+            # Check EmailRep for reputation
+            try:
+                emailrep_results = await self._check_emailrep(email)
+                if emailrep_results:
+                    results['metadata']['reputation'] = emailrep_results.get('reputation', 'unknown')
+                    results['metadata']['suspicious'] = emailrep_results.get('suspicious', False)
+                    results['social_media'] = emailrep_results.get('profiles', [])
+
+                    if emailrep_results.get('suspicious'):
+                        results['risk_factors'].append("Suspicious email reputation")
+            except Exception as e:
+                self.logger.error(f"EmailRep check failed for {email}: {str(e)}")
+
+            # Search for email in pastes using Intel X
+            try:
+                paste_results = await self._search_intelx(email)
+                if paste_results:
+                    results['pastes'] = paste_results
+                    if len(paste_results) > 0:
+                        results['risk_factors'].append(f"Found in {len(paste_results)} paste sites")
+            except Exception as e:
+                self.logger.error(f"Intel X search failed for {email}: {str(e)}")
+
+            # Domain information
+            try:
+                domain = email.split('@')[1]
+                domain_info = await self._gather_domain_info(domain)
+                if domain_info:
+                    results['domains'].append(domain_info)
+
+                    if domain_info.get('suspicious'):
+                        results['risk_factors'].append("Suspicious domain detected")
+                    if domain_info.get('disposable'):
+                        results['risk_factors'].append("Disposable email domain")
+            except Exception as e:
+                self.logger.error(f"Domain gathering failed for {email}: {str(e)}")
+
+            # Calculate risk score
+            risk_score = 0
+            if results['breaches']:
+                risk_score += min(len(results['breaches']) * 10, 50)
+            if results['pastes']:
+                risk_score += min(len(results['pastes']) * 5, 30)
+            if results.get('metadata', {}).get('suspicious'):
+                risk_score += 40
+
+            results['risk_score'] = min(risk_score, 100)
+
+            return results
+
+        except Exception as e:
+            self.logger.error(f"Error gathering email info for {email}: {str(e)}")
+            return {'error': str(e)}
+
+    async def _check_hibp(self, email):
+        """Check Have I Been Pwned for breaches"""
+        try:
+            headers = {
+                'hibp-api-key': self.config['api_keys']['hibp'],
+                'user-agent': self._get_random_user_agent()
+            }
+
+            async with self.session.get(
+                    f'https://haveibeenpwned.com/api/v3/breachedaccount/{email}',
+                    headers=headers
+            ) as response:
+                if response.status == 200:
+                    return await response.json()
+                elif response.status == 404:
+                    return []
+                else:
+                    self.logger.error(f"HIBP API error: {response.status}")
+                    return None
+        except Exception as e:
+            self.logger.error(f"HIBP check error: {str(e)}")
+            return None
+
+    async def _check_emailrep(self, email):
+        """Check EmailRep for email reputation"""
+        try:
+            headers = {
+                'Key': self.config['api_keys']['emailrep'],
+                'User-Agent': self._get_random_user_agent()
+            }
+
+            async with self.session.get(
+                    f'https://emailrep.io/{email}',
+                    headers=headers
+            ) as response:
+                if response.status == 200:
+                    return await response.json()
+                else:
+                    self.logger.error(f"EmailRep API error: {response.status}")
+                    return None
+        except Exception as e:
+            self.logger.error(f"EmailRep check error: {str(e)}")
+            return None
+
+    async def _gather_domain_info(self, domain):
+        """Gather information about a domain"""
+        try:
+            result = {
+                'domain': domain,
+                'creation_date': None,
+                'expiration_date': None,
+                'registrar': None,
+                'suspicious': False,
+                'disposable': False
+            }
+
+            # Check if domain is disposable
+            disposable_domains = [
+                'tempmail.com', 'throwawaymail.com', 'guerrillamail.com',
+                'temp-mail.org', 'fakeinbox.com', 'mailinator.com'
+            ]
+
+            if domain in disposable_domains:
+                result['disposable'] = True
+                result['suspicious'] = True
+
+            # Add WHOIS lookup here if needed
+            # Add DNS checks here if needed
+
+            return result
+        except Exception as e:
+            self.logger.error(f"Domain info gathering error: {str(e)}")
+            return None
+
+    async def _search_intelx(self, email):
+        """Search Intel X for email mentions"""
+        try:
+            if hasattr(self, 'intelx_client'):
+                results = await self.intelx_client.search(email)
+                return results
+            return []
+        except Exception as e:
+            self.logger.error(f"Intel X search error: {str(e)}")
+            return []
+
+    def _get_random_user_agent(self):
+        """Get a random user agent string"""
+        user_agents = [
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+            'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+            'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:89.0) Gecko/20100101 Firefox/89.0'
+        ]
+        return random.choice(user_agents)
     async def cleanup(self):
         """Clean up resources"""
         try:
